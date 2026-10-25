@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>SOPHIA Quiz Studio</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error-container": "#93000a",
+          "on-error": "#ffffff",
+          "surface-variant": "#e2dfff",
+          "on-primary-container": "#f0eaff",
+          "surface-container-low": "#f5f2ff",
+          "on-primary-fixed": "#1b0062",
+          "on-tertiary-container": "#9cffeb",
+          "error-container": "#ffdad6",
+          "on-tertiary-fixed": "#00201b",
+          "primary-fixed": "#e6deff",
+          "error": "#ba1a1a",
+          "on-surface": "#191932",
+          "secondary-container": "#4e91ff",
+          "surface": "#fcf8ff",
+          "primary": "#532cd8",
+          "on-tertiary-fixed-variant": "#005046",
+          "on-surface-variant": "#484555",
+          "surface-container": "#efecff",
+          "surface-container-high": "#e8e5ff",
+          "surface-tint": "#5f3ce4",
+          "secondary-fixed": "#d7e2ff",
+          "primary-fixed-dim": "#c9beff",
+          "on-primary": "#ffffff",
+          "on-secondary-fixed": "#001a40",
+          "inverse-on-surface": "#f2efff",
+          "tertiary-fixed-dim": "#4ddcc5",
+          "surface-dim": "#d9d7f9",
+          "secondary-fixed-dim": "#acc7ff",
+          "on-secondary-container": "#002a5f",
+          "tertiary-fixed": "#6ff9e1",
+          "on-tertiary": "#ffffff",
+          "inverse-primary": "#c9beff",
+          "outline": "#797587",
+          "surface-bright": "#fcf8ff",
+          "on-secondary-fixed-variant": "#004492",
+          "primary-container": "#6c4cf1",
+          "inverse-surface": "#2e2e48",
+          "secondary": "#005bbe",
+          "surface-container-lowest": "#ffffff",
+          "tertiary": "#005e52",
+          "background": "#fcf8ff",
+          "tertiary-container": "#00796a",
+          "on-primary-fixed-variant": "#4616cc",
+          "on-background": "#191932",
+          "surface-container-highest": "#e2dfff",
+          "outline-variant": "#c9c4d8",
+          "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin": "2rem",
+          "margin-mobile": "1rem",
+          "space-xl": "2rem",
+          "space-2xl": "3rem",
+          "space-sm": "0.75rem",
+          "gutter-sm": "1rem",
+          "space-lg": "1.5rem",
+          "space-xxs": "0.25rem",
+          "space-md": "1rem",
+          "gutter": "1.5rem",
+          "space-xs": "0.5rem"
+        },
+        "fontFamily": {
+          "display-hero-mobile": ["Plus Jakarta Sans"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "label-lg": ["Plus Jakarta Sans"],
+          "display-hero": ["Plus Jakarta Sans"],
+          "body-xl": ["Plus Jakarta Sans"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "label-sm": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "label-md": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "counter-display": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+          "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+          "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+          "display-hero": ["56px", { "lineHeight": "68px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+          "body-xl": ["20px", { "lineHeight": "30px", "fontWeight": "500" }],
+          "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+          "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "label-md": ["14px", { "lineHeight": "18px", "letterSpacing": "0.015em", "fontWeight": "700" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+          "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+          "counter-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+        }
+      }
+    }
+  }</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_4px_16px_rgba(83,44,216,0.06)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md"><img alt="SOPHIA EdTech Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VKT7KS4Hg6BUciUyCmEDlvFf8VFVGojody8tnY7d_-goSrQdFkq7e3B-kwEW968VaQ4bne6khYR5hm2kewWL0RsnJ2GGGUEoBVGRX7VoeJBLMV9YtkBUP8wz3XWRj0ysK9G2XyCywsMxI-EQRWfNPueKeZNYlKckk57BrntmcsXaAc3OmAuk8-so5A9jj8f1JrzdJ1cSvByVK4RnV7kouIUOMdMVvIOQX_qlhav40dYbNcv-uQlAUCmKE"/><div class="hidden sm:flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">SOPHIA</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Quiz Studio</span></div></div><nav class="hidden md:flex items-center gap-space-xs bg-surface-container-low p-space-xxs rounded-xl" data-active-classes="bg-primary-container text-on-primary font-label-md rounded-xl shadow-[0_2px_8px_rgba(108,76,241,0.25)]"><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" data-path="trang-chu" href="#">Trang chủ</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" data-path="quan-ly-bo-cau-hoi" href="#">Quản lý bộ câu hỏi</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center gap-space-xs px-space-md py-space-xs bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-xl transition-all shadow-[0_4px_12px_rgba(108,76,241,0.2)] active:translate-y-0.5" data-path="tao-bo-cau-hoi" href="#"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>Tạo bộ câu hỏi</span></a><div class="flex items-center gap-space-xs bg-surface-container-low p-space-xxs pr-space-sm rounded-full"><div class="p-[2px] rounded-full bg-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="hidden lg:flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface leading-tight">Minh Triết</span><span class="font-label-sm text-label-sm text-tertiary-container font-semibold leading-none">Pro</span></div></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
+<!-- BANNER CHẾ ĐỘ XEM TRƯỚC (Preview Mode Banner) -->
+<section class="w-full bg-gradient-to-r from-primary-fixed via-surface-container-high to-secondary-fixed/50 py-space-sm px-margin shadow-sm">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-md flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">visibility</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Chế độ xem trước dành cho tác giả</span>
+<span class="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider">Preview Mode</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Mô phỏng trải nghiệm thực tế của người học • Không tích lũy điểm thật • Không ghi đè cơ sở dữ liệu câu đố
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto justify-end">
+<button class="px-space-md py-space-xs rounded-xl bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all flex items-center gap-space-xs active:translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Trở về soạn thảo</span>
+</button>
+<button class="px-space-lg py-space-xs rounded-xl bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_4px_14px_rgba(108,76,241,0.35)] hover:bg-primary transition-all flex items-center gap-space-xs active:translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span>Xuất bản bộ câu hỏi</span>
+</button>
+</div>
+</div>
+</section>
+<!-- NỘI DUNG CHÍNH (Max-width container) -->
+<div class="max-w-7xl mx-auto w-full px-margin py-space-lg flex flex-col gap-space-lg">
+<!-- KHỐI THÔNG TIN BỘ ĐỀ (Quiz Header Summary Card) -->
+<div class="bg-surface-container-lowest rounded-[20px] p-space-lg shadow-sm flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded-full bg-primary-fixed text-primary font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+            Triết học &amp; Tư tưởng
+          </span>
+<span class="px-space-sm py-1 rounded-full bg-secondary-fixed text-secondary font-label-sm text-label-sm font-bold">
+            Kỹ năng tranh biện
+          </span>
+<span class="px-space-sm py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+            100% Sẵn sàng xuất bản
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">
+          Triết học phương Đông &amp; Nghệ thuật sống
+        </h1>
+<div class="flex flex-wrap items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">quiz</span>
+<span><strong>12</strong> câu hỏi trắc nghiệm</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">timer</span>
+<span><strong>15s</strong> thời gian suy nghĩ mỗi câu</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">group</span>
+<span>Chế độ: Đấu trực tiếp / Tự luyện tập</span>
+</div>
+</div>
+</div>
+<!-- Quick toggles & author tools -->
+<div class="flex items-center gap-space-md bg-surface-container-low p-space-sm rounded-2xl w-full lg:w-auto justify-between lg:justify-end">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Hiện đáp án đúng của tác giả</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Đánh dấu phương án chuẩn</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="authorKeyToggle" type="checkbox"/>
+<div class="w-13 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-primary-container after:content-[''] after:absolute after:top-[2px] after:left-[4px] after:bg-on-primary after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all"></div>
+</label>
+</div>
+</div>
+<!-- KHUNG LÀM VIỆC CHÍNH: LƯỚI 12 CỘT (8 CỘT PREVIEW PLAYER, 4 CỘT SIDEBAR) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- CỘT CHÍNH (8 CỘT): KHUNG XEM TRƯỚC CÂU ĐỐ TƯƠNG TÁC (Interactive Preview Player Frame) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- HUD / Status Bar của người chơi -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary tracking-widest font-extrabold uppercase">CÂU HỎI 02 / 12</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Trắc nghiệm đơn • 100 điểm thưởng</span>
+</div>
+</div>
+<!-- Progress Bar mini -->
+<div class="hidden sm:flex flex-1 max-w-xs flex-col gap-1">
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden flex">
+<div class="h-full bg-gradient-to-r from-primary-container to-tertiary-fixed-dim" style="width: 16.6%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Tiến độ</span>
+<span class="font-bold text-primary">16%</span>
+</div>
+</div>
+<!-- Đồng hồ đếm ngược (Countdown Timer) -->
+<div class="flex items-center gap-space-xs">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-high" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-secondary-container transition-all duration-1000" cx="24" cy="24" fill="transparent" id="timerProgressCircle" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="31.4" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute font-headline-sm text-headline-sm text-on-surface font-extrabold" id="timerDisplay">12s</span>
+</div>
+<button class="w-9 h-9 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-all" id="resetTimerBtn" title="Đặt lại bộ đếm giờ mô phỏng" type="button">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+</button>
+</div>
+</div>
+<!-- THẺ CÂU HỎI CHÍNH (Question Card with Visual Asset) -->
+<div class="bg-surface-container-lowest rounded-[24px] p-space-lg lg:p-space-xl shadow-md flex flex-col gap-space-lg relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-lg bg-surface-container-high text-primary flex items-center justify-center font-label-md text-label-md font-bold">Q2</span>
+<span class="px-space-xs py-1 rounded-md bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">Độ khó: Trung bình</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<button class="p-1 rounded-lg hover:bg-surface-container transition-colors" title="Phóng to ảnh" type="button">
+<span class="material-symbols-outlined text-[20px]">zoom_in</span>
+</button>
+<button class="p-1 rounded-lg hover:bg-surface-container transition-colors" title="Báo cáo câu hỏi" type="button">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-space-lg items-center">
+<!-- Văn bản câu hỏi -->
+<div class="flex-1 flex flex-col gap-space-sm">
+<h2 class="font-headline-md lg:font-headline-lg text-headline-md lg:text-headline-lg text-on-surface leading-snug">
+                Khái niệm “Vô vi” (Wu Wei) trong tư tưởng Đạo gia mang hàm nghĩa cốt lõi nào sau đây?
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Gợi ý tác giả: Cần chú ý phân biệt giữa trạng thái thụ động buông xuôi và sự hành động tinh tế không khiên cưỡng.
+              </p>
+</div>
+<!-- Thẻ minh họa trực quan sinh động -->
+<div class="w-full md:w-56 h-44 rounded-2xl overflow-hidden relative shadow-inner bg-surface-container flex-shrink-0 group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Bức tranh thủy mặc phương Đông tao nhã miêu tả dòng nước suối trong xanh uốn lượn hiền hòa quanh những tảng đá rêu phong rợp bóng trúc mộng mơ. Bảng màu gồm xanh chàm, xanh ngọc bích và ánh tím mờ ảo mang phong cách Playful Professional EdTech của SOPHIA Studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuG2wmcLkdhvBvoRdoH0sOarAprRNZ-wDHa5lvTYM_vacWa7qYdShWz5APAB5FCTmPEtmjagaBxlPjDNoewHFuBep3mhICFrg9nWWg8irJTEzYY6ZMU09O69Mxnb3LxOSq3QGfDD4HKfMd1-XCxCSvP93yEVa-oMsL0EOHHLPfDVdEhqzl6OiNafMhPChadCr2O2WSl_JrwOvu7PAVVwZGlxncv5VS1Bhqrf-fHWw"/>
+<div class="absolute bottom-2 left-2 right-2 bg-inverse-surface/75 backdrop-blur-md rounded-lg py-1 px-2 flex items-center gap-1.5 text-inverse-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed">water_drop</span>
+<span class="truncate">Biểu tượng dòng nước chảy tự nhiên</span>
+</div>
+</div>
+</div>
+<!-- LƯỚI 4 THẺ PHƯƠNG ÁN TRẢ LỜI ĐA SẮC ĐẶC TRƯNG CỦA SOPHIA (2x2 Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Phương án A (Màu xanh dương #4388F5) -->
+<button class="answer-option group text-left p-space-md rounded-2xl bg-secondary-fixed/30 hover:bg-secondary-fixed/50 transition-all flex flex-col justify-between gap-space-sm shadow-sm active:translate-y-1 relative" style="border-bottom: 4px solid #005bbe;" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-xl bg-secondary text-on-secondary flex items-center justify-center font-label-lg text-label-lg font-black shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">change_history</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Lựa chọn A</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-normal pt-1">
+                Không làm bất cứ việc gì, phó mặc hoàn toàn cho số phận và may rủi.
+              </p>
+<div class="h-5 flex items-center">
+<span class="text-outline text-label-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Bấm để thử nghiệm</span>
+</div>
+</button>
+<!-- Phương án B (Màu xanh mòng két Teal #20BFA9 - Trạng thái ĐÁP ÁN CHÍNH XÁC) -->
+<button class="answer-option group text-left p-space-md rounded-2xl bg-tertiary-fixed/40 hover:bg-tertiary-fixed/60 transition-all flex flex-col justify-between gap-space-sm shadow-md active:translate-y-1 relative" style="border-bottom: 4px solid #00796a;" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-xl bg-tertiary-container text-on-primary flex items-center justify-center font-label-lg text-label-lg font-black shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<!-- Huy hiệu đáp án chuẩn tác giả -->
+<span class="px-space-xs py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm font-extrabold flex items-center gap-1" id="correctKeyBadge">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                  Đáp án chuẩn
+                </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-bold leading-normal pt-1">
+                Hành động thuận theo tự nhiên, không cưỡng ép hay can thiệp vụ lợi.
+              </p>
+<div class="h-5 flex items-center">
+<span class="text-tertiary-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                  Chính xác tuyệt đối
+                </span>
+</div>
+</button>
+<!-- Phương án C (Màu đỏ san hô Coral #FF7468) -->
+<button class="answer-option group text-left p-space-md rounded-2xl bg-error-container/40 hover:bg-error-container/60 transition-all flex flex-col justify-between gap-space-sm shadow-sm active:translate-y-1 relative" style="border-bottom: 4px solid #ba1a1a;" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-xl bg-error text-on-error flex items-center justify-center font-label-lg text-label-lg font-black shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">radio_button_unchecked</span>
+</div>
+<span class="font-label-sm text-label-sm text-error font-bold uppercase tracking-wider">Lựa chọn C</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-normal pt-1">
+                Chỉ tập trung vào công việc cá nhân và đóng cửa tách biệt xã hội.
+              </p>
+<div class="h-5 flex items-center">
+<span class="text-outline text-label-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Bấm để thử nghiệm</span>
+</div>
+</button>
+<!-- Phương án D (Màu tím hoa cà Purple #6C4CF1) -->
+<button class="answer-option group text-left p-space-md rounded-2xl bg-primary-fixed/40 hover:bg-primary-fixed/60 transition-all flex flex-col justify-between gap-space-sm shadow-sm active:translate-y-1 relative" style="border-bottom: 4px solid #532cd8;" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-xl bg-primary text-on-primary flex items-center justify-center font-label-lg text-label-lg font-black shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">crop_square</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Lựa chọn D</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-normal pt-1">
+                Tuân theo các quy tắc khắt khe và giáo điều do tiền nhân đặt ra.
+              </p>
+<div class="h-5 flex items-center">
+<span class="text-outline text-label-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Bấm để thử nghiệm</span>
+</div>
+</button>
+</div>
+<!-- KHỐI GIẢI THÍCH CHI TIẾT KHI TRẢ LỜI XONG (Explanation & Insight Drawer) -->
+<div class="bg-gradient-to-r from-surface-container-low to-primary-fixed-dim/20 rounded-2xl p-space-md flex items-start gap-space-md shadow-sm" id="explanationDrawer">
+<div class="w-10 h-10 rounded-xl bg-tertiary-container text-on-primary flex items-center justify-center flex-shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[22px]">lightbulb</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+                Giải thích học thuật &amp; Củng cố tri thức
+                <span class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">Được hiển thị sau khi nộp bài</span>
+</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Trong <em>Đạo Đức Kinh</em> của Lão Tử, “Vô vi” không hàm nghĩa lười biếng, tiêu cực hay trốn tránh trách nhiệm. Trái lại, đó là nghệ thuật hành động thượng thừa: hành động hài hòa tuyệt đối với quy luật vận hành của tự nhiên (Đạo), không lấy ý chí chủ quan áp đặt lên vạn vật.
+              </p>
+</div>
+</div>
+</div>
+<!-- HỘP THÔNG BÁO TƯƠNG TÁC MÔ PHỎNG (Feedback Toast Banner) -->
+<div class="hidden p-space-md rounded-2xl items-center justify-between shadow-md transition-all" id="simulationAlert">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[28px]" id="simulationIcon"></span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm leading-tight" id="simulationTitle"></span>
+<span class="font-body-sm text-body-sm" id="simulationDesc"></span>
+</div>
+</div>
+<button class="p-1 rounded-lg hover:bg-black/10" id="closeAlertBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- CỘT PHỤ (4 CỘT): ĐIỀU HƯỚNG BỘ ĐỀ & BỘ MÔ PHỎNG PHẢN HỒI (Sidebar Navigation & Question Selector) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- THẺ ĐIỀU HƯỚNG DANH SÁCH 12 CÂU HỎI -->
+<div class="bg-surface-container-lowest rounded-[20px] p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Mục lục câu hỏi</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">12 / 12 đã soạn</span>
+</div>
+<!-- Lưới 12 nút số câu hỏi -->
+<div class="grid grid-cols-4 gap-space-xs">
+<!-- Câu 01: Đã hoàn tất -->
+<button class="h-12 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md flex flex-col items-center justify-center relative hover:scale-105 transition-all shadow-sm" type="button">
+<span class="leading-none">01</span>
+<span class="material-symbols-outlined text-[14px] leading-none mt-0.5">check</span>
+</button>
+<!-- Câu 02: Đang xem trước (Active) -->
+<button class="h-12 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex flex-col items-center justify-center relative shadow-[0_4px_12px_rgba(83,44,216,0.35)] scale-105" style="border: 2px solid #532cd8;" type="button">
+<span class="leading-none font-extrabold">02</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed mt-1"></span>
+</button>
+<!-- Câu 03 đến 12: Đầy đủ nội dung, sẵn sàng nhảy đến -->
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">03</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">04</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">05</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">06</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">07</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">08</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">09</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">10</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">11</button>
+<button class="h-12 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all" type="button">12</button>
+</div>
+<!-- Chú thích trạng thái -->
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span>Đang xem</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-tertiary-fixed"></span>
+<span>Đã kiểm duyệt</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-surface-container-high"></span>
+<span>Chưa xem</span>
+</div>
+</div>
+<!-- Bộ nút lật trang Câu trước / Câu tiếp theo -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-xs rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-all active:translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+<span>Câu trước</span>
+</button>
+<button class="px-space-md py-space-xs rounded-xl bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 transition-all shadow-sm active:translate-y-0.5 hover:bg-primary" type="button">
+<span>Câu tiếp theo</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- THẺ TIỆN ÍCH KIỂM TRA PHẢN HỒI NGƯỜI CHƠI (Simulate Player Feedback) -->
+<div class="bg-surface-container-lowest rounded-[20px] p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">smart_toy</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Hộp thử nghiệm phản hồi</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Nhấn vào các nút bên dưới để tác giả kiểm tra nhanh cảm giác âm thanh, màu sắc phản hồi khi học sinh làm bài:
+          </p>
+<div class="flex flex-col gap-space-xs">
+<!-- Nút mô phỏng Đúng -->
+<button class="w-full px-space-md py-space-xs rounded-xl bg-tertiary-fixed/30 hover:bg-tertiary-fixed/60 text-on-tertiary-fixed font-label-md text-label-md flex items-center justify-between transition-all" id="simCorrectBtn" style="border-bottom: 3px solid #00796a;" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-tertiary-container">sentiment_very_satisfied</span>
+<span>Mô phỏng: Trả lời Đúng (+100đ)</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<!-- Nút mô phỏng Sai -->
+<button class="w-full px-space-md py-space-xs rounded-xl bg-error-container/40 hover:bg-error-container/70 text-on-error-container font-label-md text-label-md flex items-center justify-between transition-all" id="simWrongBtn" style="border-bottom: 3px solid #ba1a1a;" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-error">sentiment_dissatisfied</span>
+<span>Mô phỏng: Trả lời Sai (Thử lại)</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<!-- Nút mô phỏng Hết giờ -->
+<button class="w-full px-space-md py-space-xs rounded-xl bg-secondary-fixed/40 hover:bg-secondary-fixed/70 text-on-secondary-fixed font-label-md text-label-md flex items-center justify-between transition-all" id="simTimeoutBtn" style="border-bottom: 3px solid #005bbe;" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary">alarm_off</span>
+<span>Mô phỏng: Hết thời gian đếm ngược</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- THẺ THỐNG KÊ NHANH CỦA BỘ ĐỀ (Quick Insight Card) -->
+<div class="bg-gradient-to-br from-primary-fixed/30 to-surface-container-low rounded-[20px] p-space-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">insights</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Đánh giá cấu trúc đề</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Phân bổ hợp lý: 4 Dễ • 6 Trung bình • 2 Nâng cao</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SCRIPT MICRO-INTERACTIONS CHO PREVIEW PLAYER -->
+<script>
+    (function() {
+      // Toggle author key badge visibility
+      const keyToggle = document.getElementById('authorKeyToggle');
+      const correctBadge = document.getElementById('correctKeyBadge');
+      if (keyToggle && correctBadge) {
+        keyToggle.addEventListener('change', function() {
+          correctBadge.style.display = this.checked ? 'inline-flex' : 'none';
+        });
+      }
+
+      // Simulation toast handler
+      const alertBox = document.getElementById('simulationAlert');
+      const alertIcon = document.getElementById('simulationIcon');
+      const alertTitle = document.getElementById('simulationTitle');
+      const alertDesc = document.getElementById('simulationDesc');
+      const closeAlertBtn = document.getElementById('closeAlertBtn');
+
+      function showAlert(type, title, desc, iconName) {
+        if (!alertBox) return;
+        alertBox.className = 'p-space-md rounded-2xl flex items-center justify-between shadow-md transition-all';
+        if (type === 'correct') {
+          alertBox.classList.add('bg-tertiary-fixed', 'text-on-tertiary-fixed');
+        } else if (type === 'wrong') {
+          alertBox.classList.add('bg-error-container', 'text-on-error-container');
+        } else {
+          alertBox.classList.add('bg-secondary-fixed', 'text-on-secondary-fixed');
+        }
+        alertIcon.textContent = iconName;
+        alertTitle.textContent = title;
+        alertDesc.textContent = desc;
+        alertBox.classList.remove('hidden');
+      }
+
+      if (closeAlertBtn) {
+        closeAlertBtn.addEventListener('click', function() {
+          alertBox.classList.add('hidden');
+        });
+      }
+
+      const simCorrectBtn = document.getElementById('simCorrectBtn');
+      if (simCorrectBtn) {
+        simCorrectBtn.addEventListener('click', function() {
+          showAlert('correct', 'Chính xác! +100 Điểm kinh nghiệm', 'Âm thanh ăn mừng đang kích hoạt trong môi trường thi đấu.', 'verified');
+        });
+      }
+
+      const simWrongBtn = document.getElementById('simWrongBtn');
+      if (simWrongBtn) {
+        simWrongBtn.addEventListener('click', function() {
+          showAlert('wrong', 'Rất tiếc! Chưa chính xác', 'Gợi ý giải thích học thuật đã được tự động mở rộng để ôn tập.', 'cancel');
+        });
+      }
+
+      const simTimeoutBtn = document.getElementById('simTimeoutBtn');
+      if (simTimeoutBtn) {
+        simTimeoutBtn.addEventListener('click', function() {
+          showAlert('timeout', 'Hết giờ suy nghĩ!', 'Hệ thống tự động khóa lựa chọn và hiển thị kết quả đáp án chuẩn.', 'timer_off');
+          const timerDisplay = document.getElementById('timerDisplay');
+          if (timerDisplay) timerDisplay.textContent = '00s';
+        });
+      }
+
+      // Reset Timer logic
+      const resetTimerBtn = document.getElementById('resetTimerBtn');
+      const timerDisplay = document.getElementById('timerDisplay');
+      if (resetTimerBtn && timerDisplay) {
+        resetTimerBtn.addEventListener('click', function() {
+          timerDisplay.textContent = '15s';
+          if (alertBox) alertBox.classList.add('hidden');
+        });
+      }
+
+      // Answer click simulation
+      const answerButtons = document.querySelectorAll('.answer-option');
+      answerButtons.forEach(function(btn, idx) {
+        btn.addEventListener('click', function() {
+          if (idx === 1) {
+            showAlert('correct', 'Thử nghiệm: Bạn đã chọn đáp án đúng (B)', 'Tuyệt vời! Hành động thuận theo tự nhiên là triết lý trung tâm của Lão Trang.', 'check_circle');
+          } else {
+            showAlert('wrong', 'Thử nghiệm: Bạn đã chọn phương án sai', 'Tác giả có thể xem lại phần giải thích bên dưới để củng cố nội dung câu đố.', 'error');
+          }
+        });
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-2px_12px_rgba(83,44,216,0.03)] py-space-xl"><div class="max-w-7xl mx-auto px-margin flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-3 h-3 rounded-full bg-primary-container"></div><p class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left">SOPHIA — Nền tảng sáng tạo &amp; luyện tập câu đố tương tác thế hệ mới. © 2025 SOPHIA Studio.</p></div><div class="flex items-center gap-space-md"><span class="px-space-sm py-space-xxs rounded-full bg-surface-container-high font-label-sm text-label-sm text-primary">v2.4 Playful EdTech</span><div class="flex items-center gap-space-sm text-on-surface-variant"><span class="material-symbols-outlined text-[20px] hover:text-primary transition-colors cursor-pointer">school</span><span class="material-symbols-outlined text-[20px] hover:text-primary transition-colors cursor-pointer">forum</span><span class="material-symbols-outlined text-[20px] hover:text-primary transition-colors cursor-pointer">help</span></div></div></div></footer></body></html>

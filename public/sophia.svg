@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="sophia" x1="8" x2="56" y1="4" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8068ff"/>
+      <stop offset="1" stop-color="#5035c9"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="20" fill="url(#sophia)"/>
+  <path d="M32 10l4.9 13.1L50 28l-13.1 4.9L32 46l-4.9-13.1L14 28l13.1-4.9L32 10z" fill="#fff"/>
+  <circle cx="49" cy="47" r="6" fill="#61f0d5"/>
+  <circle cx="16" cy="47" r="3" fill="#ffd75e"/>
+</svg>
