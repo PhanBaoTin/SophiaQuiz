@@ -43,8 +43,17 @@ describe("local quiz storage", () => {
     localStorage.setItem(quizStorageKey(), JSON.stringify([quiz]));
 
     const migrated = readQuizzes();
-    expect(migrated).toEqual([quiz, initialQuizzes[1]]);
+    expect(migrated).toEqual([quiz, initialQuizzes[1], initialQuizzes[2]]);
 
+    writeQuizzes([quiz]);
+    expect(readQuizzes()).toEqual([quiz]);
+  });
+
+  it("adds the requested quiz to browsers that already completed the earlier migration", () => {
+    localStorage.setItem(quizStorageKey(), JSON.stringify([quiz, initialQuizzes[1]]));
+    localStorage.setItem("sophia.quizSets.migration.democracy-quiz", "complete");
+
+    expect(readQuizzes()).toEqual([quiz, initialQuizzes[1], initialQuizzes[2]]);
     writeQuizzes([quiz]);
     expect(readQuizzes()).toEqual([quiz]);
   });
@@ -55,6 +64,15 @@ describe("local quiz storage", () => {
     expect(democracyQuiz.questions.map((question) =>
       question.options.findIndex((option) => option.id === question.correctOptionId),
     )).toEqual([0, 3, 2, 1, 2, 3, 0]);
+  });
+
+  it("includes the requested seven-question quiz with a 10-second timer and correct answers", () => {
+    const requestedQuiz = initialQuizzes[2];
+    expect(requestedQuiz.thinkingTime).toBe(10);
+    expect(requestedQuiz.questions).toHaveLength(7);
+    expect(requestedQuiz.questions.map((question) =>
+      question.options.findIndex((option) => option.id === question.correctOptionId),
+    )).toEqual([2, 3, 0, 0, 1, 1, 2]);
   });
 
   it("persists quiz data between reads", () => {

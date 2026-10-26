@@ -5,6 +5,8 @@ const STORAGE_KEY = "sophia.quizSets.v1";
 const EDITOR_KEY = "sophia.editorDraft.v1";
 const DEMOCRACY_QUIZ_MIGRATION_KEY = "sophia.quizSets.migration.democracy-quiz";
 const DEMOCRACY_QUIZ_ID = "xhcn-dan-chu-va-nha-nuoc-phap-quyen";
+const REQUESTED_DEMOCRACY_QUIZ_MIGRATION_KEY = "sophia.quizSets.migration.requested-democracy-quiz";
+const REQUESTED_DEMOCRACY_QUIZ_ID = "xhcn-dan-chu-va-nha-nuoc-phap-quyen-viet-nam";
 
 function isQuestion(value: unknown): boolean {
   if (!value || typeof value !== "object") return false;
@@ -84,11 +86,21 @@ export function readQuizzes(): QuizSet[] {
       console.error("SOPHIA: local quiz data is invalid; existing data was preserved.");
       return [];
     }
-    if (localStorage.getItem(DEMOCRACY_QUIZ_MIGRATION_KEY) !== "complete") {
+    const hasPendingMigration =
+      localStorage.getItem(DEMOCRACY_QUIZ_MIGRATION_KEY) !== "complete" ||
+      localStorage.getItem(REQUESTED_DEMOCRACY_QUIZ_MIGRATION_KEY) !== "complete";
+    if (hasPendingMigration) {
       const democracyQuiz = initialQuizzes.find((quiz) => quiz.id === DEMOCRACY_QUIZ_ID);
-      const migrated = democracyQuiz && !value.some((quiz) => quiz.id === DEMOCRACY_QUIZ_ID)
-        ? [...value, democracyQuiz]
-        : value;
+      const requestedQuiz = initialQuizzes.find((quiz) => quiz.id === REQUESTED_DEMOCRACY_QUIZ_ID);
+      const migrated = [
+        ...value,
+        ...(localStorage.getItem(DEMOCRACY_QUIZ_MIGRATION_KEY) !== "complete" && democracyQuiz && !value.some((quiz) => quiz.id === DEMOCRACY_QUIZ_ID)
+          ? [democracyQuiz]
+          : []),
+        ...(localStorage.getItem(REQUESTED_DEMOCRACY_QUIZ_MIGRATION_KEY) !== "complete" && requestedQuiz && !value.some((quiz) => quiz.id === REQUESTED_DEMOCRACY_QUIZ_ID)
+          ? [requestedQuiz]
+          : []),
+      ];
       writeQuizzes(migrated);
       return migrated;
     }
@@ -102,6 +114,7 @@ export function readQuizzes(): QuizSet[] {
 export function writeQuizzes(quizzes: QuizSet[]): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(quizzes));
   localStorage.setItem(DEMOCRACY_QUIZ_MIGRATION_KEY, "complete");
+  localStorage.setItem(REQUESTED_DEMOCRACY_QUIZ_MIGRATION_KEY, "complete");
 }
 
 export function readEditorDraft<T>(): T | null {
