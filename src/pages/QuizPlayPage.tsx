@@ -18,6 +18,7 @@ export function QuizPlayPage({ preview = false }: { preview?: boolean }) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("ready");
   const [remaining, setRemaining] = useState(quiz?.thinkingTime ?? 15);
+  const [countdownPopupVisible, setCountdownPopupVisible] = useState(false);
   const [flashingWrongOptionId, setFlashingWrongOptionId] = useState<string | null>(null);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const deadline = useRef(Date.now() + (quiz?.thinkingTime ?? 15) * 1000);
@@ -33,6 +34,7 @@ export function QuizPlayPage({ preview = false }: { preview?: boolean }) {
     setQuestionIndex(0);
     setPhase("ready");
     setRemaining(quiz?.thinkingTime ?? 15);
+    setCountdownPopupVisible(false);
     setFlashingWrongOptionId(null);
     deadline.current = Date.now() + (quiz?.thinkingTime ?? 15) * 1000;
     completed.current = false;
@@ -93,6 +95,7 @@ export function QuizPlayPage({ preview = false }: { preview?: boolean }) {
       if (questionIndex + 1 < (quiz?.questions.length ?? 0)) {
         setQuestionIndex((index) => index + 1);
         setRemaining(quiz?.thinkingTime ?? 15);
+        setCountdownPopupVisible(false);
         setFlashingWrongOptionId(null);
         ticked.current = null;
         setPhase("ready");
@@ -134,6 +137,7 @@ export function QuizPlayPage({ preview = false }: { preview?: boolean }) {
     ticked.current = null;
     setRemaining(quiz.thinkingTime);
     deadline.current = Date.now() + quiz.thinkingTime * 1000;
+    setCountdownPopupVisible(true);
     setPhase("thinking");
   };
 
@@ -192,6 +196,26 @@ export function QuizPlayPage({ preview = false }: { preview?: boolean }) {
             <strong>Chính xác!</strong>
             <span>{questionIndex + 1 === quiz.questions.length ? "Tuyệt vời! Bạn đã hoàn thành bộ câu hỏi." : "Cùng đến câu tiếp theo nhé."}</span>
           </div>
+        </div>
+      )}
+      {countdownPopupVisible && (phase === "thinking" || phase === "answering") && (
+        <div className="countdown-popup-backdrop">
+          <section className="countdown-popup" role="dialog" aria-modal="true" aria-labelledby="countdown-popup-title">
+            {phase === "thinking" ? (
+              <>
+                <span className="countdown-popup-label">Thời gian còn lại</span>
+                <strong className="countdown-popup-number" aria-live="assertive">{remaining}</strong>
+                <span className="countdown-popup-unit">giây</span>
+              </>
+            ) : (
+              <>
+                <span className="countdown-popup-expired-icon"><Clock3 size={26} /></span>
+                <strong id="countdown-popup-title" className="countdown-popup-expired">Hết Giờ</strong>
+                <span className="countdown-popup-message">Bây giờ bạn có thể chọn đáp án.</span>
+                <button type="button" className="button button-primary" onClick={() => setCountdownPopupVisible(false)}>Bắt đầu trả lời</button>
+              </>
+            )}
+          </section>
         </div>
       )}
     </div>
